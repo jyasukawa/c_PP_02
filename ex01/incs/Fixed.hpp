@@ -19,7 +19,7 @@ class Fixed
 		float toFloat( void ) const;
 		int 	toInt( void ) const;
 
-	private:
+	// private:
 		int								_value;
 		static const int	_fract_bits = 8;
 };

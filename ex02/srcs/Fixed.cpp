@@ -85,6 +85,14 @@ Fixed	Fixed::operator*(const Fixed &fixed) const
 	return (Fixed(this->toFloat() * fixed.toFloat()));
 }
 
+// Fixed   Fixed::operator*(const Fixed &other) const
+// {
+//     Fixed res;
+
+//     res._value = (this->_value * other._value) / (1 << this->_fract_bits);
+//     return res;
+// }
+
 Fixed	Fixed::operator/(const Fixed &fixed) const
 {
 	return (Fixed(this->toFloat() / fixed.toFloat()));
@@ -96,7 +104,7 @@ Fixed	&Fixed::operator++(void)
 	return (*this);
 }
 
-Fixed	Fixed::operator++(int n)
+Fixed	Fixed::operator++(int)
 {
 	// Fixed res = *this;
 	// _value++;
@@ -106,28 +114,9 @@ Fixed	Fixed::operator++(int n)
 	// ++*this;
 	// return prev;
 
-	// Fixed tmp = *this;
-	// (*this).value++;
-	// return tmp;
-
-	Fixed	aux = *this;//Fixed	aux(*this);
-	if (n < 0)
-	{
-		while (n <= 0)
-		{
-			--*this;
-			n++;
-		}
-	}
-	else
-	{
-		while (n >= 0)
-		{
-			++*this;
-			n--;
-		}
-	}
-	return (aux);
+	Fixed tmp = *this;
+	(*this)._value++;
+	return tmp;
 }
 
 Fixed	&Fixed::operator--(void)
@@ -136,7 +125,7 @@ Fixed	&Fixed::operator--(void)
 	return (*this);
 }
 
-Fixed	Fixed::operator--(int n)
+Fixed	Fixed::operator--(int)
 {
 	// Fixed res = *this;
 	// _value--;
@@ -146,28 +135,9 @@ Fixed	Fixed::operator--(int n)
 	// --*this;
 	// return prev;
 
-	// Fixed tmp = *this;
-	// (*this).value++;
-	// return tmp;
-
-	Fixed	aux = *this;//Fixed	aux(*this);
-	if (n < 0)
-	{
-		while (n <= 0)
-		{
-			++*this;
-			n++;
-		}
-	}
-	else
-	{
-		while (n >= 0)
-		{
-			--*this;
-			n--;
-		}
-	}
-	return (aux);
+	Fixed tmp = *this;
+	(*this)._value--;
+	return tmp;
 }
 
 int	Fixed::getRawBits( void ) const
